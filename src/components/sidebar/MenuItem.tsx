@@ -21,11 +21,11 @@ const MenuItem: FC<Props> = ({text, iconName, onClick, id, activeMenu, handleDel
   }
     return (
         <ListItemGroup aria-current={activeMenu === id}>
-          <Button className="w-4/5" onClick={handleSelectMenuAction}>
+          <Button id="delete" className="w-4/5" onClick={handleSelectMenuAction}>
             <List>
               <Icon name={iconName} className="stroke-current text-white h-4 w-4 mr-2" />
               <Item aria-current={activeMenu === id}>
-                  {text || 'Category1'}
+                  {text}
               </Item>
             </List>
           </Button>

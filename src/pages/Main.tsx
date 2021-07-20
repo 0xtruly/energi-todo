@@ -91,9 +91,10 @@ const Main = () => {
     () => {
       let newCategories = typedStorage.getItem('categories');
       newCategories = JSON.parse(newCategories);
+      const categoryId = newCategories && newCategories[0].id
       if (newCategories !== undefined) {
         setCategories(newCategories);
-        setActiveMenu(newCategories[0].id);
+        setActiveMenu(categoryId);
       }
     },
     [typedStorage],
@@ -206,7 +207,7 @@ const Main = () => {
   
   // Category menu
   const renderMenu = (categories: Category[]) => {
-    if (categories.length === 0) {
+    if (categories?.length === 0) {
       return (
         <div className="text-center text-lg">No categories</div>
       )

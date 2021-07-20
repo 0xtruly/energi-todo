@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 interface Props {
-  onClick?: () => void,
   children?: React.ReactElement<string> | React.ReactElement[],
 }
 
-const Sidebar: FC<Props>  = ({children, onClick}) => {
+const Sidebar: FC<Props>  = ({children}) => {
     return (
         <Container>
             <div className="flex items-center justify-center">
