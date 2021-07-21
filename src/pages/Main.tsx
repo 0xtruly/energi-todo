@@ -112,16 +112,12 @@ const Main = () => {
     const isExist = typedStorage.getItem('categories');
     if (!isExist) {
       typedStorage.setItem('categories', JSON.stringify([payload]));
-      let categories = typedStorage.getItem('categories');
-      categories = JSON.parse(categories);
-      setCategories(categories);
+      handleFetchCategories();
     } else { 
       const categories: Array<any> = JSON.parse(isExist);
       categories.push(payload);
       typedStorage.setItem('categories', JSON.stringify(categories));
-      let newCategories = typedStorage.getItem('categories');
-      newCategories = JSON.parse(newCategories);
-      setCategories(newCategories);
+      handleFetchCategories();
     }
     setSelected({value: "", label: "", icon: "" });
     setCategory('');
@@ -143,9 +139,7 @@ const Main = () => {
       return category;
     }); 
     typedStorage.setItem('categories', JSON.stringify(newCategories));
-    setTimeout(() => {
-      handleFetchTodos();
-    }, 1500);
+    handleFetchTodos();
     setTask('');
   };
 
@@ -153,9 +147,7 @@ const Main = () => {
     let newCategories = JSON.parse(typedStorage.getItem('categories'));
     newCategories = newCategories.filter((category: Category) => category.id !== id);
     typedStorage.setItem('categories', JSON.stringify(newCategories));
-    setTimeout(() => {
-      handleFetchCategories();
-    }, 1500);
+    handleFetchCategories();
   }
 
   const handleDeleteTask = (id: string) => {
@@ -169,9 +161,7 @@ const Main = () => {
       return category;
     });
     typedStorage.setItem('categories', JSON.stringify(newCategories));
-    setTimeout(() => {
-      handleFetchTodos();
-    }, 1500);
+    handleFetchTodos();
   };
 
   const handleTaskComplete = (id: string) => {
@@ -188,9 +178,7 @@ const Main = () => {
       return category;
     });
     typedStorage.setItem('categories', JSON.stringify(newCategories));
-    setTimeout(() => {
-      handleFetchTodos();
-    }, 1500);
+    handleFetchTodos();
   }
 
   const handleClick = (id: string) => {
