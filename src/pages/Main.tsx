@@ -91,7 +91,7 @@ const Main = () => {
     () => {
       let newCategories = typedStorage.getItem('categories');
       newCategories = JSON.parse(newCategories);
-      const categoryId = newCategories && newCategories[0].id
+      const categoryId = (newCategories && newCategories[0]?.id) || '';
       if (newCategories !== undefined) {
         setCategories(newCategories);
         setActiveMenu(categoryId);
